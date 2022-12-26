@@ -21,11 +21,12 @@ Create a new sentence file and copy the sentences from the sentences.ini into th
 
 The TZ environment variable needs to be set to the a valid linux timezone value when creating the docker container.
 
-There is no additional configuration needed.
+It is not necessary but you may also edit the config/responses.txt file to add or remove some of the available responses for an intent.
 
 ## Using
 
 Build a docker container using the image created above.
+
 Bind the config volume <path/on/host>:/app/config
 
 ```bash
