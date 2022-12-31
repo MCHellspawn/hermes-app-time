@@ -46,7 +46,7 @@ The following intents are implemented on the hermes MQTT topic:
 ```ini
 [TimeGetTime]
 
-[TimeGetTimeDifference]
+[TimeTzDiff]
 ```
 
 ## To-Do
