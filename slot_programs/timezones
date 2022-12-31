@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# lists all timezones available in linux
+#
+# Requires: bash to be installed
+
+set -e
+
+#Loop thorugh the timezones file and print formatted timezone name 
+#(adds () around each timezone name and removes the /)
+while IFS=$'\t' read -r -a tzArray
+do
+  if [[ $tzArray[0] != \#* ]];
+  then
+    echo "(${tzArray[2]//// }):(${tzArray[2]})"
+  fi
+done < /usr/share/zoneinfo/zone1970.tab

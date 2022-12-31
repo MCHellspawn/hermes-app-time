@@ -18,5 +18,7 @@ RUN addgroup rhasspy-app \
 USER rhasspy-app
 
 COPY hermes-app-time.py /app 
+RUN mkdir config
+COPY config/responses.txt /app/config
 
 CMD [ "sh", "-c", "python3 hermes-app-time.py --host ${MQTT_HOST} --username ${MQTT_USER} --password ${MQTT_PASSWORD} --port ${MQTT_PORT}" ]
