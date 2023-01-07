@@ -3,7 +3,10 @@ import logging
 import random
 import pytz
 from datetime import datetime
-from zoneinfo import ZoneInfo
+try:
+    from zoneinfo import ZoneInfo
+except ModuleNotFoundError:
+    from backports.zoneinfo import ZoneInfo
 from rhasspyhermes.nlu import NluIntent
 from rhasspyhermes_app import EndSession, HermesApp
 
