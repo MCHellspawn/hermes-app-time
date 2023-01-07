@@ -1,5 +1,6 @@
 FROM python:3.8.10-alpine
 RUN apk add --no-cache tzdata
+RUN apk add --no-cache gcc libc-dev
 ENV TZ=America/New_York
 ENV MQTT_HOST=localhost
 ENV MQTT_PORT=1883
@@ -9,6 +10,7 @@ ENV MQTT_PASSWORD=password
 RUN mkdir /app
 WORKDIR /app
 
+RUN pip install --upgrade pip
 COPY requirements.txt /
 RUN pip install -r /requirements.txt
 
