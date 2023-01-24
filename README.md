@@ -6,6 +6,8 @@ A skill for [Rhasspy](https://github.com/rhasspy) that provides various time rel
 
 Requires:
 * rhasspy-hermes-app 1.1.2
+* pytz 2022.7
+* backports.zoneinfo 0.2.1
 
 ### In Docker:
 To install, clone the repository and execute docker build to build the image.
@@ -16,6 +18,32 @@ sudo docker build hermes-app-time -t <image_name>
 
 ### In Rhasspy:
 Create a new sentence file and copy the sentences from the sentences.ini into the new file in Rhasspy and save. Retrain Rhasspy.
+
+Setup the slot program:
+1. SSH into the Rhasspy device 
+   * If using a base/satellite setup this is typically done on the base
+2. Navigate to your slot programs folder
+   * for example "/profiles/en/slot_programs"
+```bash
+cd /profiles/en/slot_programs
+```
+3. Create a folder name "time" and navigate to it
+```bash
+mkdir time
+cd time
+```
+4. Download the slot program from the github repo
+```bash
+wget https://raw.githubusercontent.com/MCHellspawn/hermes-app-time/master/slot_programs/timezones
+```
+5. Setup the slot variables
+```ini
+timezones = $time/timezones
+```
+6. Use the slot variable in a sentence
+```ini
+what time is it in [the] (<timezones>){timezone} [timezone]
+```
 
 ## Configuration
 
