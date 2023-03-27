@@ -76,10 +76,11 @@ async def get_time(intent: NluIntent):
         # Generate the response sentence
         sentence = get_time_response_sentence(intent, now)
        
+    app.notify(sentence, intent.site_id)
     _LOGGER.info(f"Intent: {intent.id} | Responded to TimeGetTime")
     _LOGGER.info(f"Intent: {intent.id} | Sentence: {sentence}")
     _LOGGER.info(f"Intent: {intent.id} | Completed: TimeGetTime")
-    return EndSession(sentence)
+    return EndSession()
 
 @app.on_intent("TimeTzDiff")
 async def get_tz_difference(intent: NluIntent):
@@ -89,9 +90,10 @@ async def get_tz_difference(intent: NluIntent):
 
     hours = diff_hours_tz(timezone1slot.value['value'],timezone2slot.value['value'])
     _LOGGER.info(f"Intent: {intent.id} | Difference in hours: {hours}")
-
+    sentence = f"The time differnece is {hours} hour"
+    app.notify(sentence, intent.site_id)
     _LOGGER.info(f"Intent: {intent.id} | Completed: TimeTzxDiff")
-    return EndSession("The time differnece is 1 hour")
+    return EndSession()
 
 if __name__ == "__main__":
     _LOGGER.info("Starting Hermes App: Time")
