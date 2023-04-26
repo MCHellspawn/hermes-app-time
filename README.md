@@ -69,6 +69,22 @@ sudo docker run -it -d \
         <image_name>
 ```
 
+Or with docker-compose:
+```
+version: "3.3"
+services:
+    time_skill:
+        restart: always
+        container_name: app-time
+        environment:
+            - TZ=America/New_York
+            - MQTT_HOST=<MQTT Host/IP>
+            - MQTT_PORT=<MQTT Port (Typically:1883)
+            - MQTT_USER=<MQTT User>
+            - MQTT_PASSWORD=<MQTT Password>
+        image: <image_name>
+```
+
 The following intents are implemented on the hermes MQTT topic:
 
 ```ini
