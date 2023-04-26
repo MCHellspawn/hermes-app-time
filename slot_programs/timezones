@@ -12,6 +12,6 @@ while IFS=$'\t' read -r -a tzArray
 do
   if [[ $tzArray[0] != \#* ]];
   then
-    echo "(${tzArray[2]//// }):(${tzArray[2]})"
+    echo "(${tzArray[2]//[^A-Za-z0-9]/ }):(${tzArray[2]})"
   fi
 done < /usr/share/zoneinfo/zone1970.tab
