@@ -37,7 +37,7 @@ def diff_hours_tz(from_tz_name, to_tz_name, negative=False):
     from_tz = pytz.timezone(from_tz_name)
     to_tz = pytz.timezone(to_tz_name)
 
-    utc_dt = datetime.now(datetime.tzinfo(ZoneInfo(str(from_tz))))
+    utc_dt = datetime.now(ZoneInfo(str(from_tz)))
     dt_from = dt_to = datetime.utcnow()
 
     dt_from = from_tz.localize(dt_from)
